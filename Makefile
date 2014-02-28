@@ -21,13 +21,19 @@ RES_native:=48
 RES_dingux:=24
 RES_gcw0:=24
 
+# Platform defs
+PDEFS_native:=
+PDEFS_dingux:=
+PDEFS_gcw0:=-DGCW0
+
 # Pick the definitions for the active platform.
 CC:=$(CC_$(PLATFORM))
 TOOLCHAIN:=$(TOOLCHAIN_$(PLATFORM))
 EXEEXT:=$(EXEEXT_$(PLATFORM))
 RES:=$(RES_$(PLATFORM))
+PDEFS:=$(PDEFS_$(PLATFORM))
 
-CFLAGS:=-O2 -g -Wall -Wextra -Wundef -Wunused-macros
+CFLAGS:=-O2 -g -Wall -Wextra -Wundef -Wunused-macros $(PDEFS)
 LDFLAGS:=
 
 SDL_CONFIG:=$(if $(TOOLCHAIN),$(TOOLCHAIN)/usr/bin/,)sdl-config
