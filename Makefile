@@ -3,19 +3,23 @@ PLATFORM?=native
 # Compiler to use for each platform.
 CC_native:=gcc
 CC_dingux:=mipsel-linux-gcc
+CC_gcw0:=mipsel-linux-gcc
 
 # Toolchain base directory for each platform.
 TOOLCHAIN_native:=
 TOOLCHAIN_dingux:=/opt/opendingux-toolchain
+TOOLCHAIN_gcw0:=/opt/gcw0-toolchain/usr/mipsel-gcw0-linux-uclibc/sysroot/
 
 # Executable file extension for each platform.
 EXEEXT_native:=
 EXEEXT_dingux:=.dge
+EXEEXT_gcw0:=
 
 # Tile size for each platform.
 # Use size 24 for 320x240 and size 48 for 640x480.
 RES_native:=48
 RES_dingux:=24
+RES_gcw0:=24
 
 # Pick the definitions for the active platform.
 CC:=$(CC_$(PLATFORM))
