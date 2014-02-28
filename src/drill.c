@@ -154,10 +154,14 @@ THighScore fasttimedata;
 
 THighScore *entrydata;
 
+#ifdef GCW0
+char *scorefile="/usr/local/home/.mrdrillux/drill.scr";
+char *fasttimefile="/usr/local/home/.mrdrillux/drilltime.scr";
+#else
 char *scorefile="drill.scr";
-char *highscoreformat="%3s\n%10d\n%10d\n%10d\n";
 char *fasttimefile="drilltime.scr";
-
+#endif
+char *highscoreformat="%3s\n%10d\n%10d\n%10d\n";
 
 typedef struct{
 
@@ -2391,6 +2395,10 @@ int THighScoreSave(THighScore *p,char *filename){
 
 	FILE *fp;
 	int i;
+
+#ifdef GCW0
+	system("mkdir -p /usr/local/home/.mrdrillux/");
+#endif
 
 	fp=fopen(filename,"wb");
 	if(fp==NULL){
