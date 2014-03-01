@@ -55,9 +55,17 @@ void CInputUpdate(CInput *this,int disabled){
 	if ( keys[SDLK_RIGHT] == SDL_PRESSED ) {this->button[BUTTON_RIGHT]=1;}
 	if ( keys[SDLK_LEFT] == SDL_PRESSED ) {this->button[BUTTON_LEFT]=1;}
 
+#ifdef GCW0
+	if ( keys[SDLK_LSHIFT] == SDL_PRESSED )this->button[BUTTON_0]=1; //X
+	if ( keys[SDLK_LCTRL] == SDL_PRESSED )this->button[BUTTON_0]=1; //A
+	if ( keys[SDLK_BACKSPACE] == SDL_PRESSED )this->button[BUTTON_1]=1; //R
+	if ( keys[SDLK_LALT] == SDL_PRESSED )this->button[BUTTON_1]=1; //B
+	if ( keys['\r'] == SDL_PRESSED )this->button[BUTTON_2]=1; //START
+#else
 	if ( keys[' '] == SDL_PRESSED )this->button[BUTTON_0]=1;
 	if ( keys[SDLK_BACKSPACE] == SDL_PRESSED )this->button[BUTTON_1]=1;
 	if ( keys['\r'] == SDL_PRESSED )this->button[BUTTON_2]=1;
+#endif
 
 	for(i=0;i<MAX_BUTTONS;++i){
 		if(!this->button[i]){
